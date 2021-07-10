@@ -12,8 +12,8 @@ router.use(express.urlencoded( {extended : false}));
 //아이디 중복 체크 요청 처리 부분
 
 //유저
-router.post('/user/overlap', (req, res) => { 
-    rg.register_check(req, res,'user');
+router.post('/customer/overlap', (req, res) => { 
+    rg.register_check(req, res,'customer');
 });
 
 //행정사 
@@ -26,8 +26,8 @@ router.post('/attorney/overlap', (req, res) => {
 //클라이언트 단에서 아이디 중복체크 확인 된 사람만 회원가입 요청
 
 //유저 
-router.post('/user', (req, res) => {
-    rg.insert_register_infos(req, res, 'user');
+router.post('/customer', (req, res) => {
+    rg.insert_register_infos(req, res, 'customer');
 });
 
 //행정사

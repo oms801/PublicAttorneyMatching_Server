@@ -9,8 +9,8 @@ var router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
 
-router.post('/user', (req, res) => { 
-    lg.login(req, res,'user');
+router.post('/customer', (req, res) => { 
+    lg.login(req, res,'customer');
 });
 
 router.post('/attorney', (req, res) => {

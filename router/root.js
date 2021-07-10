@@ -7,12 +7,12 @@ var router = express.Router();
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
-router.use('/get/user', authChecker);
+router.use('/get/customer', authChecker);
 
 //GET 예시 - SELECT -> path parameter
-router.get('/get/user', (req, res) => { //get method
+router.get('/get/customer', (req, res) => { //get method
     conditions = 'WHERE UID=' + req.result.ID;
-    db.SELECT('*', 'user', conditions).then((data) => { //then : resolve 호출된 경우
+    db.SELECT('*', 'customer', conditions).then((data) => { //then : resolve 호출된 경우
         res.json(data); //select 결과 json 형태로 응답
     })
     .catch((error) => { //catch : reject 호출된 경우
@@ -25,20 +25,20 @@ router.get('/get/user', (req, res) => { //get method
 router.post('', (req, res) => { //post method - body 정보를 전달
     var keys = so.query_attr_format(req.body, TABLE);
     var values = so.query_attr_format(req.body, VALUES);
-    db.INSERT(keys, values, 'user');
+    db.INSERT(keys, values, 'customer');
 })
 
 //PUT 예시 - UPDATE -> request body
 router.put('', (req, res) => {
     var key_values = so.query_attr_format(req.body, SET);
     conditions = 'WHERE id="test2"';
-    db.UPDATE(key_values, 'user', conditions);
+    db.UPDATE(key_values, 'customer', conditions);
 })
 
 //DELETE 예시 - DELETE -> path parameter
 router.delete('', (req, res) => {
     conditions = 'WHERE id="test2"';
-    db.DELETE('user', conditions);  
+    db.DELETE('customer', conditions);  
 })
 
 module.exports = router;
