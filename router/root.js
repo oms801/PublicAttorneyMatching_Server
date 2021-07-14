@@ -7,12 +7,23 @@ var router = express.Router();
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
-router.use('/get/customer', authChecker);
+router.use('/customer1', authChecker);
 
 //GET 예시 - SELECT -> path parameter
-router.get('/get/customer', (req, res) => { //get method
-    conditions = 'WHERE UID=' + req.result.ID;
+router.get('/customer', (req, res) => { //get method
+    conditions = 'WHERE cid=' + req.result.ID;
     db.SELECT('*', 'customer', conditions).then((data) => { //then : resolve 호출된 경우
+        res.json(data); //select 결과 json 형태로 응답
+    })
+    .catch((error) => { //catch : reject 호출된 경우
+        res.send('error'); //error 응답
+    })  
+});
+
+//GET 예시 - SELECT -> path parameter
+router.get('/customer1', (req, res) => { //get method
+    conditions = 'WHERE cid=' + req.result.ID;
+    db.SELECT('*', 'customer_info', conditions).then((data) => { //then : resolve 호출된 경우
         res.json(data); //select 결과 json 형태로 응답
     })
     .catch((error) => { //catch : reject 호출된 경우

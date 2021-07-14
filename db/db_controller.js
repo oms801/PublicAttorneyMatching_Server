@@ -1,4 +1,4 @@
-const con = require('./db_config').init(); 
+const con = require('./db_config').init();
 
 var query_statement;
 
@@ -17,15 +17,18 @@ exports.SELECT = function (attributes, table, conditions) {
 }
 
 exports.INSERT = function (keys, values, table) {
-    query_statement = 'INSERT INTO ' + table + '(' + keys + ')' + ' VALUES(' + values + ')';
-    console.log(query_statement)
-    con.query(query_statement, function (err, rows, fields) {
-        console.log(rows);
-    });
+    return new Promise((resolve, reject) => {
+        query_statement = 'INSERT INTO ' + table + '(' + keys + ')' + ' VALUES(' + values + ')';
+        console.log(query_statement)
+        con.query(query_statement, function (err, rows, fields) {
+            console.log(rows);
+            resolve(rows);
+        })
+    })
 }
 
 exports.UPDATE = function (key_values, table, conditions) {
-    query_statement = 'UPDATE ' + table + ' SET '+ key_values + ' ' + conditions; 
+    query_statement = 'UPDATE ' + table + ' SET ' + key_values + ' ' + conditions;
     console.log(query_statement)
     con.query(query_statement, function (err, rows, fields) {
         console.log(rows);
@@ -50,6 +53,5 @@ exports.USER_CHECK = function (id, table) {
         });
     })
 }
-
 
 

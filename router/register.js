@@ -1,7 +1,4 @@
 const express = require('express');
-const db = require('../db/db_controller');
-const so = require('../lib/str_operation');
-const en = require('../lib/encrypt');
 const rg = require('../lib/register');
 
 var router = express.Router();
