@@ -8,12 +8,13 @@ router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
 router.use('/', authChecker);
 
-//내가 작성한 게시글 불러오기
-router.get('/board', (req, res) => { 
+//유저가 작성한 게시글 불러오기
+router.get('/customer/board', (req, res) => { 
     mp.get_my_post(req, res);
 });
 
-router.get('/reply', (req, res) => { 
+//행정사가 작성한 댓글 불러오기
+router.get('/attorney/reply', (req, res) => { 
     mp.get_my_reply(req, res);
 });
 
