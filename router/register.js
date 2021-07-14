@@ -1,10 +1,13 @@
 const express = require('express');
 const rg = require('../lib/register');
+const mul = require('../lib/multer')
 
 var router = express.Router();
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
+
+var upload = mul.upload;
 
 //아이디 중복 체크 요청 처리 부분
 
@@ -28,7 +31,9 @@ router.post('/customer', (req, res) => {
 });
 
 //행정사
-router.post('/attorney', (req, res) => { 
+router.post('/attorney', upload.single('image'), (req, res) => { 
+    console.log(req.file);
+    req.body.profile_image_src = req.file.filename;
     rg.insert_register_infos(req, res, 'attorney');
 });
 
