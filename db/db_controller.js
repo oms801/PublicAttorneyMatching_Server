@@ -28,11 +28,14 @@ exports.INSERT = function (keys, values, table) {
 }
 
 exports.UPDATE = function (key_values, table, conditions) {
-    query_statement = 'UPDATE ' + table + ' SET ' + key_values + ' ' + conditions;
-    console.log(query_statement)
-    con.query(query_statement, function (err, rows, fields) {
-        console.log(rows);
-    });
+    return new Promise((resolve, reject) => {
+        query_statement = 'UPDATE ' + table + ' SET ' + key_values + ' ' + conditions;
+        console.log(query_statement)
+        con.query(query_statement, function (err, rows, fields) {
+            console.log(rows);
+            resolve(rows);
+        });
+    })
 }
 
 exports.DELETE = function (table, conditions) {
