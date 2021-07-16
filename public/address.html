@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+	
+<input id = "check" type="text" value="hello" onchange="changeCheck()" />
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    new daum.Postcode({
+        oncomplete: function(data) {
+	document.getElementById('check').value = "("+data.zonecode+")" + data.roadAddress;
+
+	window.TestApp.getAddress(data.zonecode, data.roadAddress, data.buildingName);
+        }
+    }).open();
+</script>
+</body>
+</html>
+

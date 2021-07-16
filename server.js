@@ -15,6 +15,8 @@ app.use('/login', login)
 app.use('/board', board)
 app.use('/mypage', mypage)
 
+app.use(express.static('public'));
+
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`)
 })
