@@ -16,6 +16,7 @@ app.use('/board', board)
 app.use('/mypage', mypage)
 
 app.use(express.static('public'));
+app.use(express.static('image'));
 
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`)
