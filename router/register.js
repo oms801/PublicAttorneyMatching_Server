@@ -31,9 +31,10 @@ router.post('/customer', (req, res) => {
 });
 
 //행정사
-router.post('/attorney', upload.single('image'), (req, res) => { 
-    console.log(req.file);
-    req.body.profile_image_src = req.file.filename;
+router.post('/attorney', upload.array('file'), (req, res) => { 
+    console.log(req.files);
+    console.log(req.files[0].filename);
+    req.body.profile_image_src = req.files[0].filename;
     rg.insert_register_infos(req, res, 'attorney');
 });
 
