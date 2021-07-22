@@ -8,13 +8,15 @@ module.exports = (req, res, next) => {
         const token = req.headers.authorization.split('Bearer ')[1]; 
         jwt.verify(token).then((data) => { //then : resolve 호출된 경우
             req.result = data; //select 결과 json 형태로 응답
+            req.token = 'VALID';
             next();
         })
         .catch((error) => { //catch : reject 호출된 경우
-            res.send(error); //error 응답
-        })  
+            req.token = 'INVALID';
+            next();
+        })
     } else {
-        res.status(401).json({ error: 'Auth Error' }); 
+        req.token = 'INVALID';
     }
 }
 

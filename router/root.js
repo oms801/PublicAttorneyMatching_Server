@@ -7,7 +7,7 @@ var router = express.Router();
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
-router.use('/customer1', authChecker);
+router.use('/customer1', authChecker); //jwt 토큰 사용할 path 추가
 
 //GET 예시 - SELECT -> path parameter
 router.get('/customer', (req, res) => { //get method
@@ -20,9 +20,9 @@ router.get('/customer', (req, res) => { //get method
     })  
 });
 
-//GET 예시 - SELECT -> path parameter
+//GET 예시 - jwt 토큰 활용 예시
 router.get('/customer1', (req, res) => { //get method
-    conditions = 'WHERE cid=' + req.result.ID;
+    conditions = 'WHERE cid=' + req.result.ID; //req.result.ID로 cid, aid 받아옴
     db.SELECT('*', 'customer_info', conditions).then((data) => { //then : resolve 호출된 경우
         res.json(data); //select 결과 json 형태로 응답
     })

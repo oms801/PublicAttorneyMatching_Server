@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const limiter = require('./lib/limiter').limiter;
 
 //라우터
 const root = require('./router/root')
@@ -9,6 +10,7 @@ const board = require('./router/board')
 const mypage = require('./router/mypage')
 
 //라우터 base 경로 설정
+app.use('/', limiter);
 app.use('/get', root)
 app.use('/register', register)
 app.use('/login', login)

@@ -6,27 +6,26 @@ var router = express.Router();
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
-router.use('/', authChecker);
 
 //게시글 작성 - 유저
-router.post('/post/:category', (req, res) => { 
+router.post('/post/:category', authChecker, (req, res) => { 
     bd.write_post(req, res, req.params.category);
 });
 
 //답변 작성 - 행정사
-router.post('/reply/:category', (req, res) => { 
+router.post('/reply/:category', authChecker, (req, res) => { 
     bd.write_reply(req, res, req.params.category);
 });
 
 
-//카테고리 전체 게시글 불러오기 - 유저, 행정사
-router.get('/post/:category/:offset', (req, res) => { 
+//카테고리 게시글 10개, 총 게시글 수 불러오기  - 유저, 행정사
+router.get('/post/all/:category/:offset', (req, res) => { 
     bd.get_category_post(res, req.params.category, req.params.offset);   
 });
 
-//게시글에 대한 답변 불러오기
-router.get('/reply/:category/:bid', (req, res) => { 
-    bd.get_reply(res, req.params.category, req.params.bid);
+//클릭한 게시글 및 답변 불러오기 - 유저, 행정사
+router.get('/post/:category/:bid', (req, res) => { 
+    bd.get_post_and_reply(res, req.params.category, req.params.bid);   
 });
 
 module.exports = router;
