@@ -8,6 +8,10 @@ router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
 router.use('/', authChecker);
 
+//유저 정보 수정
+
+//행정사 정보 수정
+
 //유저가 작성한 게시글 불러오기
 router.get('/customer/board', (req, res) => { 
     mp.get_my_post(req, res);

@@ -7,12 +7,13 @@ router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
 
 //행정사 리스트 + 필터링
-router.post('/attorney/list', (req, res) => { 
+router.get('/attorney/list/:category/:land', (req, res) => { 
+    mc.get_attorney_list(req, res, req.params.category, req.params.land);
 });
 
 //선택한 행정사 세부 정보
-router.post('/attorney/:aid', (req, res) => {
-    //req.params.aid 
+router.get('/attorney/:aid', (req, res) => {
+    mc.get_attorney_detail(req, res, req.params.aid);
 });
 
 module.exports = router;
