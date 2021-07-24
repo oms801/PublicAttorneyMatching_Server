@@ -7,9 +7,15 @@ var router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
 
-//유저 정보 수정
+//내정보 관리 접근 시
+router.post('/info/access', (req, res) => {
+    mp.user_check(req, res);
+})
 
-//행정사 정보 수정
+//내 정보 수정
+router.put('/info/update', authChecker, (req, res) => {
+    mp.update_info(req, res);
+})
 
 //유저가 작성한 게시글 불러오기
 router.get('/customer/board', authChecker, (req, res) => { 
