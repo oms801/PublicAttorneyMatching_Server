@@ -1,8 +1,11 @@
 const express = require('express');
 const mp = require('../lib/mypage')
 const authChecker = require('../middleware/authChecker')
+const mul = require('../lib/multer')
 
 var router = express.Router();
+
+var upload = mul.upload;
 
 router.use(express.json());
 router.use(express.urlencoded( {extended : false}));
@@ -30,6 +33,15 @@ router.get('/attorney/reply', authChecker, (req, res) => {
 //행정사가 클릭한 답변의 게시글 정보 불러오기
 router.get('/attorney/post/:category/:bid', (req, res) => {
     mp.get_post_info(res, req.params.category, req.params.bid);
+})
+
+//행정사 메인 - 소갯말 수정
+router.put('/attorney/intro' ,authChecker, (req, res) => {
+    mp.update_attorney_intro(req, res);  
+})
+
+router.post('/attorney/image/update/:src', authChecker, upload.single('image'), (req, res) => {
+    mp.update_profile_image_src(req, res, req.params.src);
 })
 
 module.exports = router;

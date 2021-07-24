@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         })
         .catch((error) => { //catch : reject 호출된 경우
             req.token = 'INVALID';
-            next();
+            res.json({msg: "INVALID"});
         })
     } else {
         req.token = 'INVALID';
