@@ -21,4 +21,9 @@ router.get('/attorney/reply', authChecker, (req, res) => {
     mp.get_my_reply(req, res);
 });
 
+//행정사가 클릭한 답변의 게시글 정보 불러오기
+router.get('/attorney/post/:category/:bid', (req, res) => {
+    mp.get_post_info(res, req.params.category, req.params.bid);
+})
+
 module.exports = router;
