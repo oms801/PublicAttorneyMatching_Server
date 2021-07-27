@@ -15,10 +15,16 @@ router.post('/info/access', (req, res) => {
     mp.user_check(req, res);
 })
 
-//내 정보 수정
+//내 정보 수정(행정사, 유저)
 router.put('/info/update', authChecker, (req, res) => {
     mp.update_info(req, res);
 })
+
+//행정사 프로필 이미지 수정
+router.post('/attorney/image/update/:src', authChecker, upload.single('image'), (req, res) => {
+    mp.update_profile_image_src(req, res, req.params.src);
+})
+
 
 //유저가 작성한 게시글 불러오기
 router.get('/customer/board', authChecker, (req, res) => { 
@@ -38,10 +44,6 @@ router.get('/attorney/post/:category/:bid', (req, res) => {
 //행정사 메인 - 소갯말 수정
 router.put('/attorney/intro' ,authChecker, (req, res) => {
     mp.update_attorney_intro(req, res);  
-})
-
-router.post('/attorney/image/update/:src', authChecker, upload.single('image'), (req, res) => {
-    mp.update_profile_image_src(req, res, req.params.src);
 })
 
 module.exports = router;
