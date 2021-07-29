@@ -28,4 +28,9 @@ router.get('/post/:category/:bid', (req, res) => {
     bd.get_post_and_reply(res, req.params.category, req.params.bid);   
 });
 
+//상담하러가기 버튼 클릭한 행정사 세부 정보
+router.get('/attorney/:aid', (req, res) => {
+    bd.get_attorney_detail(res, req.params.aid);
+});
+
 module.exports = router;

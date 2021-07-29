@@ -11,9 +11,4 @@ router.get('/attorney/list/:category/:land', (req, res) => {
     mc.get_attorney_list(req, res, req.params.category, req.params.land);
 });
 
-//선택한 행정사 세부 정보
-router.get('/attorney/:aid', (req, res) => {
-    mc.get_attorney_detail(req, res, req.params.aid);
-});
-
 module.exports = router;
