@@ -1,5 +1,9 @@
-var redis = require('redis');
-var client = redis.createClient();
+const de = require('dotenv');
+const redis = require('redis');
+
+de.config();
+
+const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
 client.on('error', function(err) {
     console.log('Error' + err);
