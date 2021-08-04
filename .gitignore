@@ -1,5 +1,9 @@
 .env
 node_modules
 package-lock.json
-image/*.jpg
+image/
+!image/README.md
 db/mysql_data/
+!db/mysql_data/README.md
+db/config/
+!db/config/README.md
