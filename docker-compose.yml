@@ -1,0 +1,29 @@
+version: "3.8" #docker-compose version
+
+services: #container define
+    express_server: #service name
+        container_name: express_server
+        image: "server"
+        ports: 
+            - "3000:3000"
+    mysql_server:
+        container_name: mysql_server
+        image: "mysql"
+        ports :
+            - "3301:3306"
+        environment: 
+            - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+            - TZ=Asia/Seoul
+        command: # 명령어 실행
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci
+            - --lower_case_table_names=1
+        volumes: 
+            - ./db/mysql_data:/var/lib/mysql
+    redis_server:
+        container_name: redis_server
+        image: "redis"
+        command: redis-server --port 6379
+        ports :
+            - "6379:6379"
+        
