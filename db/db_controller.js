@@ -1,7 +1,5 @@
 const con = require('./db_config').init();
 
-console.log(con);
-
 var query_statement;
 
 //conditions는 WHERE 절 그대로 입력 받음
