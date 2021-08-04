@@ -9,4 +9,4 @@ db/mysql_data/*
 !db/mysql_data/README.md
 !db/config/
 db/config/*
-!db/config/REAMDME.md
+!db/config/README.md
