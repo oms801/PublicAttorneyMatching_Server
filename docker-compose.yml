@@ -22,6 +22,8 @@ services: #container define
         command: redis-server --port 6379
         ports :
             - "6379:6379"
+        volumes: 
+            - ./db/redis_data:/data
     express_server: #service name
         container_name: express_server
         image: "server"

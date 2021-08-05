@@ -3,4 +3,5 @@ node_modules
 package-lock.json
 image
 db/mysql_data
-db/config
+db/mysql_config
+db/redis_data
