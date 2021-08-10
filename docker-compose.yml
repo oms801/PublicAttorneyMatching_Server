@@ -24,3 +24,5 @@ services: #container define
             - "6379:6379"
         volumes: 
             - ./db/redis_data:/data
+        environment:
+            - TZ=Asia/Seoul
