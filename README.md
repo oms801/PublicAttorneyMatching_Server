@@ -17,12 +17,12 @@
 <br>
 
 ## jenkins execute command
-docker stop express_server
+- docker stop express_server
 
-docker rm express_server
+- docker rm express_server
 
-docker rmi server
+- docker rmi server
 
-docker build . -t server
+- docker build . -t server
 
-run -d -p 3000:3000 --name express_server -it --link mysql_server:mysql_server --link redis_server:redis_server --net=githubwebhook_default -v ./image:/app/image server
+- run -d -p 3000:3000 --name express_server -it --link mysql_server:mysql_server --link redis_server:redis_server --net=githubwebhook_default -v ./image:/app/image server
