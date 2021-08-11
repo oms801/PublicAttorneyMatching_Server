@@ -5,7 +5,7 @@
 ### image 폴더 생성 필요
 ### db/mysql_data, db/mysql_config, db/redis_data 폴더 생성 필요 
 
-## docker run
+## github execute command
 ### docker stop express_server
 ### docker rm express_server
 ### docker rmi server
