@@ -1,18 +1,18 @@
 # PublicAttorneyMatching_Server 
 - 행정사 매칭 앱의 서버입니다.
 
-개발 스택 : Nodejs Express, MySQL, Redis, Docker, Jenkins
+- 개발 스택 : Nodejs Express, MySQL, Redis, Docker, Jenkins
 <br>
 <br>
 
 ## 초기 시작
-로컬 서버 실행 시 npm install 
+- 로컬 서버 실행 시 npm install 
 
-.env 파일 작성 필요
+- .env 파일 작성 필요
 
-/image 폴더 생성 필요
+- /image 폴더 생성 필요
 
-/db/mysql_data, /db/mysql_config, /db/redis_data 폴더 생성 필요
+- /db/mysql_data, /db/mysql_config, /db/redis_data 폴더 생성 필요
 <br>
 <br>
 
