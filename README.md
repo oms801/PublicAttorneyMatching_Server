@@ -1,5 +1,5 @@
 # PublicAttorneyMatching_Server 
-행정사 매칭 앱의 서버입니다.
+- 행정사 매칭 앱의 서버입니다.
 
 개발 스택 : Nodejs Express, MySQL, Redis, Docker, Jenkins
 <br>
